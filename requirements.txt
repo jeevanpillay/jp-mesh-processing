@@ -1,6 +1,6 @@
-numpy
-trimesh
-pyvista
-pymeshlab
-rtree
-mesh-to-sdf
+numpy==2.1.2
+trimesh==4.5.0
+pyvista==0.44.1
+pymeshlab==2023.12.post2
+rtree==1.3.0
+mesh-to-sdf==0.0.15

@@ -23,7 +23,7 @@ pip install jp-mesh-processing
 To use the package, you can import the necessary functions and classes from the `mesh_processing` module.
 
 ```python
-from mesh_processing import load_mesh, analyze_mesh, simplify_mesh, calculate_mesh_curvature, compute_sdf_mesh_to_sdf
+from jp_mesh_processing import load_mesh, analyze_mesh, simplify_mesh, calculate_mesh_curvature, compute_sdf_mesh_to_sdf
 
 # Example usage
 mesh = load_mesh("path/to/your/mesh.obj")
@@ -41,7 +41,10 @@ sdf = compute_sdf_mesh_to_sdf(mesh, 64)
   - [ ] Set up apps/www website for project documentation
   - [ ] Develop web-based visualization for mesh and SDF converted files
   - [ ] Ensure fast and easy access to visualizations and documentation
-
+- [ ] Review and update dependencies:
+  - [ ] Remove unused dependencies from requirements.txt and setup files
+  - [ ] Verify the necessity of 'rtree' and remove if unused
+  - [ ] Ensure 'pymeshlab' and 'pyvista' are properly utilized in the codebase
 
 ## License
 

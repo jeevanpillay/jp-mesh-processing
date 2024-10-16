@@ -4,14 +4,14 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="mesh_processing_tools",
+    name="jp-mesh-processing",
     version="0.1.0",
     author="jeevanpillay",
     author_email="jp@jeevanpillay.com",
     description="A package for 3D mesh processing and analysis",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/jeevanpillay/mesh_processing",
+    url="https://github.com/jeevanpillay/jp-mesh-processing",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     classifiers=[
