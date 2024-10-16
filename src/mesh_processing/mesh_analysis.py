@@ -1,7 +1,7 @@
 import numpy as np
 import trimesh
-from mesh_exceptions import MeshAnalysisError
-from utils import format_log_message
+from .mesh_exceptions import MeshAnalysisError
+from .utils import format_log_message
 
 def calculate_genus(mesh: trimesh.Trimesh) -> int:
     V = len(mesh.vertices)

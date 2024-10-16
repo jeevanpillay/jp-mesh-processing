@@ -1,6 +1,6 @@
 import trimesh
 import numpy as np
-from mesh_exceptions import MeshSimplificationError
+from .mesh_exceptions import MeshSimplificationError
 import pymeshlab
 
 def simplify_mesh(mesh: trimesh.Trimesh, target_percent: float, logger) -> trimesh.Trimesh:

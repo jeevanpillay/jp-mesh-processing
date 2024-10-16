@@ -1,6 +1,6 @@
 import numpy as np
 import trimesh
-from mesh_exceptions import MeshSDFError
+from .mesh_exceptions import MeshSDFError
 from mesh_to_sdf import mesh_to_sdf, sample_sdf_near_surface
 
 def compute_sdf_mesh_to_sdf(mesh: trimesh.Trimesh, resolution: int, logger) -> np.ndarray:

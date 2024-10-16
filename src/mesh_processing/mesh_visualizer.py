@@ -1,7 +1,7 @@
 import pyvista as pv
 import trimesh
 import numpy as np
-from mesh_exceptions import MeshSDFError, MeshVisualizationError
+from .mesh_exceptions import MeshSDFError, MeshVisualizationError
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from skimage import measure

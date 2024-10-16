@@ -1,6 +1,6 @@
 import trimesh
 import os
-from mesh_exceptions import InvalidPathError, MeshFileNotFoundError, MeshImportError
+from .mesh_exceptions import InvalidPathError, MeshFileNotFoundError, MeshImportError
 
 def load_mesh(mesh_path: str, logger) -> trimesh.Trimesh:
     logger.info(f"Loading mesh from: {mesh_path}")
