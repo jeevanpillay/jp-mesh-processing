@@ -45,6 +45,7 @@ sdf = compute_sdf_mesh_to_sdf(mesh, 64)
   - [ ] Remove unused dependencies from requirements.txt and setup files
   - [ ] Verify the necessity of 'rtree' and remove if unused
   - [ ] Ensure 'pymeshlab' and 'pyvista' are properly utilized in the codebase
+- [ ] Pylint & Pytest Integration
 
 ## License
 
