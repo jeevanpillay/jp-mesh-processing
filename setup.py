@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="jp_mesh",
-    version="0.1.0",
+    version="0.1.1",
     author="jeevanpillay",
     author_email="jp@jeevanpillay.com",
     description="A package for 3D mesh processing and analysis",
