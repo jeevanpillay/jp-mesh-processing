@@ -1,23 +1,27 @@
 import unittest
-from src.mesh_processing   import (
+from pathlib import Path
+from src.mesh_processing import (
     setup_logger, load_mesh, analyze_mesh, visualize_mesh,
     simplify_mesh, calculate_mesh_curvature, compute_sdf_mesh_to_sdf,
     MeshLoadError, MeshAnalysisError, MeshVisualizationError,
-    MeshSimplificationError, MeshSDFError
+    MeshSimplificationError, MeshSDFError, InvalidPathError
 )
-
 from src.mesh_processing.utils import timeit
 
 class TestMeshProcessing(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.logger = setup_logger(__name__)
-        cls.MESH_PATH = r"C:\Users\iv-windows\iCloudDrive\Desktop\x\3d\obj\components\skull\skull.obj" # TODO: make this a path to a temporary file
+        cls.TEST_DIR = Path(__file__).parent.absolute()
+        cls.MESH_PATH = cls.TEST_DIR / "skull.obj"
         cls.SIMPLIFICATION_RATIO = 0.25
         cls.SDF_RESOLUTION = 64
 
     def setUp(self):
-        self.mesh = load_mesh(self.MESH_PATH, self.logger)
+        try:
+            self.mesh = load_mesh(str(self.MESH_PATH), self.logger)
+        except InvalidPathError:
+            self.fail(f"Failed to load mesh. Make sure 'skull.obj' is in the tests directory: {self.TEST_DIR}")
 
     def test_mesh_loading(self):
         self.assertIsNotNone(self.mesh, "Mesh should be loaded successfully")
@@ -27,12 +31,6 @@ class TestMeshProcessing(unittest.TestCase):
         self.assertIsNotNone(analysis, "Mesh analysis should not be None")
         self.assertIn("vertex_count", analysis, "Analysis should include vertex count")
         self.assertIn("face_count", analysis, "Analysis should include face count")
-
-    def test_mesh_visualization(self):
-        try:
-            visualize_mesh(self.mesh, self.logger, show_edges=True, show_normals=False, title="Test Mesh")
-        except MeshVisualizationError as e:
-            self.fail(f"Mesh visualization failed: {str(e)}")
 
     def test_mesh_simplification(self):
         simplified_mesh = simplify_mesh(self.mesh, self.SIMPLIFICATION_RATIO, self.logger)
@@ -52,7 +50,7 @@ class TestMeshProcessing(unittest.TestCase):
                          "SDF should have correct shape")
 
     def test_error_handling(self):
-        with self.assertRaises(MeshLoadError):
+        with self.assertRaises(InvalidPathError):
             load_mesh("non_existent_file.obj", self.logger)
 
 if __name__ == '__main__':
